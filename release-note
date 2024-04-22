@@ -1,0 +1,16 @@
+# release-note
+
+Version=2.0.0
+Date=20240419
+
+- refactor: 从现场编译修改为直接提供编译好的二进制文件, 自带 zlib, 仅依赖现场环境有 glibc, 不向系统注入任何库文件.
+
+Version=1.1.0
+Date=20230911
+
+- feat: 增加判断如果不是用 root 执行则不提示退出.
+
+Version=1.0.0
+Date=20230911
+
+1. 新建. 使用 openssl 3 版和 curl 7.88.1 版, 新的 curl 和 openssl 均安装在 /opt/curl/ 下. curl 软连接到系统原 curl 路径或系统 bin 目录下, openssl 通过 /etc/ld.so.conf.d/curl-openssl-${openssl_version}.conf 注入系统

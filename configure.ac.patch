@@ -1,0 +1,25 @@
+--- configure.ac	2023-02-20 15:24:52.000000000 +0800
++++ 1	2023-09-12 10:15:04.798173846 +0800
+@@ -2530,22 +2530,6 @@
+   fi
+   #
+   dnl WinIDN requires a minimum supported OS version of at least Vista (0x0600)
+-  AC_COMPILE_IFELSE([
+-    AC_LANG_PROGRAM([[
+-      #include <windows.h>
+-    ]],[[
+-      #if (WINVER < 0x600) && (_WIN32_WINNT < 0x600)
+-      #error
+-      #endif
+-    ]])
+-  ],[
+-  ],[
+-     CFLAGS=`echo $CFLAGS | $SED -e 's/-DWINVER=[[^ ]]*//g'`
+-     CFLAGS=`echo $CFLAGS | $SED -e 's/-D_WIN32_WINNT=[[^ ]]*//g'`
+-     CPPFLAGS=`echo $CPPFLAGS | $SED -e 's/-DWINVER=[[^ ]]*//g'`
+-     CPPFLAGS=`echo $CPPFLAGS | $SED -e 's/-D_WIN32_WINNT=[[^ ]]*//g'`
+-     WINIDN_CPPFLAGS="$WINIDN_CPPFLAGS -DWINVER=0x0600"
+-  ])
+   #
+   CPPFLAGS="$CPPFLAGS $WINIDN_CPPFLAGS"
+   LDFLAGS="$LDFLAGS $WINIDN_LDFLAGS"
